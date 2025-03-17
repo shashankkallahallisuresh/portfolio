@@ -1,0 +1,2548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shashank Kallahalli Suresh | Senior Business Analyst</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --light-gray: #f1f5f9;
+            --gray: #64748b;
+            --accent: #8b5cf6;
+            --danger: #ef4444;
+            --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --smooth-transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+        
+        body {
+            color: var(--dark);
+            line-height: 1.7;
+            background-color: var(--light);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--smooth-transition);
+        }
+        
+        a:hover {
+            color: var(--accent);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--smooth-transition);
+            border: none;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Header and navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            position: relative;
+            color: var(--dark);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        
+        /* Hero section */
+        .hero {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: linear-gradient(to right, rgba(37, 99, 235, 0.1), rgba(139, 92, 246, 0.1));
+            top: -200px;
+            right: -200px;
+            z-index: -1;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: linear-gradient(to right, rgba(16, 185, 129, 0.1), rgba(37, 99, 235, 0.1));
+            bottom: -200px;
+            left: -200px;
+            z-index: -1;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 4rem;
+        }
+        
+        .hero-text h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .hero-text h1 span {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero-text h1 span::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 8px;
+            bottom: 5px;
+            left: 0;
+            background-color: rgba(37, 99, 235, 0.2);
+            z-index: -1;
+        }
+        
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+        
+        .hero-image {
+            position: relative;
+        }
+        
+        .profile-card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid var(--light);
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-title {
+            font-size: 1rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .stat-item {
+            background-color: var(--light-gray);
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            transition: var(--smooth-transition);
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+        
+        .shape-1 {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(16, 185, 129, 0.2);
+            top: 20%;
+            left: -20px;
+        }
+        
+        .shape-2 {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(37, 99, 235, 0.2);
+            bottom: 30%;
+            right: -10px;
+        }
+        
+        .shape-3 {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(139, 92, 246, 0.2);
+            top: 60%;
+            left: 20%;
+        }
+        
+        /* Sections */
+        section {
+            padding: 6rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-subtitle {
+            display: inline-block;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .section-desc {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--gray);
+        }
+        
+        /* About section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            position: relative;
+        }
+        
+        .about-img-container {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .about-img-container::before {
+            content: '';
+            display: block;
+            padding-top: 100%;
+        }
+        
+        .about-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        
+        .about-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 120px;
+            height: 120px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .about-experience {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: var(--card-shadow);
+            padding: 1rem;
+            position: absolute;
+            top: -20px;
+            left: -20px;
+        }
+        
+        .about-exp-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .about-exp-text {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .about-text h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+        
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 0.5rem;
+            background-color: rgba(37, 99, 235, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+        
+        .feature-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-text p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        /* Services section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+            padding: 2rem;
+            transition: var(--smooth-transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: var(--primary);
+            opacity: 0.05;
+            z-index: -1;
+            transition: var(--smooth-transition);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card:hover::before {
+            height: 100%;
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 0.5rem;
+            background-color: rgba(37, 99, 235, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            transition: var(--smooth-transition);
+        }
+        
+        .service-card:hover .service-icon {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .service-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .service-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--smooth-transition);
+        }
+        
+        .service-card:hover .service-title::after {
+            width: 100px;
+        }
+        
+        .service-desc {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Experience section */
+        .experience-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            background-color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--smooth-transition);
+            font-size: 0.95rem;
+            color: var(--gray);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .tab-btn:hover:not(.active) {
+            background-color: var(--light-gray);
+        }
+        
+        .experience-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+            padding: 2rem;
+        }
+        
+        .experience-item {
+            display: none;
+        }
+        
+        .experience-item.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .exp-title-wrapper h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .exp-company {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .exp-duration {
+            color: var(--gray);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .exp-tag {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--secondary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .exp-responsibilities ul {
+            list-style-position: inside;
+            margin-bottom: 1.5rem;
+        }
+        
+        .exp-responsibilities li {
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .exp-responsibilities li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .exp-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .metric-item {
+            background-color: var(--light-gray);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* Projects section */
+        .projects-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            background-color: white;
+            border: none;
+            border-radius: 2rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--smooth-transition);
+            font-size: 0.9rem;
+            color: var(--gray);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .filter-btn:hover:not(.active) {
+            background-color: var(--light-gray);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--smooth-transition);
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-tag {
+            display: inline-block;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .project-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-desc {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .project-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .stat-value {
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .project-link {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .project-link.primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .project-link.secondary {
+            background-color: var(--light-gray);
+            color: var(--dark);
+        }
+        
+        /* Skills section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+        
+        .skills-category {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+            padding: 2rem;
+        }
+        
+        .skills-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .skills-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 0.5rem;
+            background-color: rgba(37, 99, 235, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+        
+        .skills-title {
+            font-size: 1.25rem;
+        }
+        
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-name {
+            font-weight: 500;
+        }
+        
+        .skill-percentage {
+            color: var(--gray);
+        }
+        
+        .skill-bar {
+            width: 100%;
+            height: 10px;
+            background-color: var(--light-gray);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background-color: var(--primary);
+            border-radius: 5px;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        
+        .tool-item {
+            background-color: var(--light-gray);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+            transition: var(--smooth-transition);
+        }
+        
+        .tool-item:hover {
+            background-color: rgba(37, 99, 235, 0.1);
+        }
+        
+        .tool-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* Insights section */
+        .insights-container {
+            padding-top: 1rem;
+        }
+        
+        .insight-card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .insight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--primary);
+        }
+        
+        .insight-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .insight-desc {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .insight-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .insight-metric {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .insight-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .insight-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .chart-container {
+            margin-top: 2rem;
+            height: 300px;
+            background-color: var(--light-gray);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .chart-placeholder {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+        
+        .chart-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        /* Testimonials section */
+        .testimonials-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+            padding: 2rem;
+            margin: 0 auto;
+            position: relative;
+            max-width: 800px;
+        }
+        
+        .testimonial-quote {
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .author-position {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .testimonial-rating {
+            display: flex;
+            gap: 0.25rem;
+            margin-top: 0.5rem;
+        }
+        
+        .rating-star {
+            color: #fbbf24;
+        }
+        
+        /* Publications section */
+        .publications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .publication-card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            transition: var(--smooth-transition);
+        }
+        
+        .publication-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .publication-img {
+            height: 180px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .publication-content {
+            padding: 1.5rem;
+        }
+        
+        .publication-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .publication-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .publication-journal {
+            font-style: italic;
+        }
+        
+        .publication-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .publication-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .publication-btn.primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .publication-btn.secondary {
+            background-color: var(--light-gray);
+            color: var(--dark);
+        }
+        
+        /* Achievements section */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .achievement-card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            transition: var(--smooth-transition);
+            position: relative;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(37, 99, 235, 0.1);
+            border-radius: 0 0 0 100%;
+            z-index: 1;
+        }
+        
+        .achievement-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--primary);
+            z-index: 2;
+        }
+        
+        .achievement-content {
+            padding: 2rem;
+        }
+        
+        .achievement-date {
+            display: inline-block;
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--secondary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .achievement-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .achievement-desc {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        /* Contact section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+        
+        .contact-desc {
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+        
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(37, 99, 235, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+        
+        .contact-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .contact-text p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        .contact-form {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+            padding: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--light-gray);
+            transition: var(--smooth-transition);
+            font-size: 0.95rem;
+        }
+        
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: white;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+            padding: 4rem 0 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-desc {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .footer-social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            transition: var(--smooth-transition);
+        }
+        
+        .footer-social-link:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .footer-title {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .footer-link {
+            color: var(--gray);
+            transition: var(--smooth-transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-link i {
+            font-size: 0.8rem;
+        }
+        
+        .footer-link:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .footer-contact-icon {
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+        
+        .footer-contact-text {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        .footer-bottom {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+        }
+        
+        /* Media queries */
+        @media screen and (max-width: 991px) {
+            .hero-content,
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .hero-image,
+            .contact-form {
+                grid-row: 1;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 2rem;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                transition: var(--smooth-transition);
+                z-index: 100;
+            }
+            
+            .nav-links.show {
+                left: 0;
+            }
+            
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .exp-metrics {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects-grid,
+            .publications-grid,
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-text h3,
+            .contact-info h3 {
+                font-size: 1.75rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Shashank Kallahalli Suresh</a>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#insights" class="nav-link">Insights</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Senior Business <span>Analyst</span> & Data Scientist</h1>
+                    <p>Transforming complex business challenges into actionable insights with data-driven solutions. Specializing in advanced analytics, process optimization, and strategic decision support.</p>
+                    <div>
+                        <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                        <a href="#experience" class="btn btn-outline">View Experience</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="floating-shapes">
+                        <div class="shape shape-1"></div>
+                        <div class="shape shape-2"></div>
+                        <div class="shape shape-3"></div>
+                    </div>
+                    <div class="profile-card">
+                        <div class="profile-image">SK</div>
+                        <h3 class="profile-name">Shashank Kallahalli Suresh</h3>
+                        <p class="profile-title">Senior Business Analyst</p>
+                        <div class="social-links">
+                            <a href="https://linkedin.com/in/skallaha/" class="social-link" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/shashankks0709" class="social-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="mailto:skallaha@tepper.cmu.edu" class="social-link">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="tel:+14122872226" class="social-link">
+                                <i class="fas fa-phone"></i>
+                            </a>
+                        </div>
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">3+</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">15+</div>
+                                <div class="stat-label">Projects</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">2</div>
+                                <div class="stat-label">Publications</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">About Me</span>
+                <h2 class="section-title">Professional Overview</h2>
+                <p class="section-desc">A seasoned Business Analyst with expertise in data science, machine learning, and business intelligence solutions.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="about-experience">
+                        <div class="about-exp-number">3+</div>
+                        <div class="about-exp-text">Years of<br>Experience</div>
+                    </div>
+                    <div class="about-img-container">
+                        <div class="about-img">SK</div>
+                    </div>
+                    <div class="about-badge">CMU Alumni</div>
+                </div>
+                <div class="about-text">
+                    <h3>Senior Business Analyst & Data Scientist</h3>
+                    <p>As a Senior Business Analyst with a strong foundation in data science and analytics, I specialize in bridging the gap between business challenges and technological solutions. My approach combines analytical rigor with strategic thinking to deliver measurable results.</p>
+                    <p>With experience at industry leaders like Management Science Associates, Maersk, and Hewlett Packard Enterprise, I've consistently delivered data-driven solutions that optimize processes, reduce costs, and enhance decision-making capabilities.</p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Data-Driven Strategy</h4>
+                                <p>Translating business requirements into analytical frameworks that drive strategic decisions.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Process Optimization</h4>
+                                <p>Streamlining workflows and systems to enhance efficiency and reduce operational costs.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Advanced Analytics</h4>
+                                <p>Applying machine learning and statistical modeling to extract actionable insights.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Stakeholder Alignment</h4>
+                                <p>Facilitating communication between technical teams and business stakeholders.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="services" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">What I Do</span>
+                <h2 class="section-title">My Services</h2>
+                <p class="section-desc">Specialized analytical services to help organizations make data-driven decisions and optimize their operations.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="service-title">Business Intelligence</h3>
+                    <p class="service-desc">Design and implementation of comprehensive dashboards and reporting solutions that provide real-time insights into key business metrics.</p>
+                    <ul>
+                        <li>KPI Development & Tracking</li>
+                        <li>Dashboard Creation</li>
+                        <li>Data Visualization</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="service-title">Process Optimization</h3>
+                    <p class="service-desc">Analysis and enhancement of business processes to eliminate inefficiencies, reduce costs, and improve overall operational performance.</p>
+                    <ul>
+                        <li>Workflow Analysis</li>
+                        <li>Bottleneck Identification</li>
+                        <li>Automation Solutions</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="service-title">Predictive Analytics</h3>
+                    <p class="service-desc">Development of statistical models and machine learning algorithms to forecast trends, identify patterns, and support proactive decision-making.</p>
+                    <ul>
+                        <li>Time Series Forecasting</li>
+                        <li>Customer Segmentation</li>
+                        <li>Churn Prediction</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="service-title">Data Management</h3>
+                    <p class="service-desc">Implementation of robust data architecture and ETL processes to ensure data integrity, accessibility, and usability across the organization.</p>
+                    <ul>
+                        <li>ETL Pipeline Design</li>
+                        <li>Data Quality Assessment</li>
+                        <li>Data Governance Frameworks</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="service-title">Requirements Engineering</h3>
+                    <p class="service-desc">Elicitation, analysis, and documentation of business requirements to ensure alignment between stakeholder needs and technical implementation.</p>
+                    <ul>
+                        <li>User Story Development</li>
+                        <li>Process Modeling</li>
+                        <li>Functional Specifications</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="service-title">Strategic Consulting</h3>
+                    <p class="service-desc">Advisory services to help organizations leverage data assets for competitive advantage and strategic growth opportunities.</p>
+                    <ul>
+                        <li>Data Strategy Development</li>
+                        <li>Analytics Roadmap Planning</li>
+                        <li>Technology Assessment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="experience">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">My Journey</span>
+                <h2 class="section-title">Professional Experience</h2>
+                <p class="section-desc">A track record of delivering data-driven solutions across diverse industries and organizations.</p>
+            </div>
+            <div class="experience-tabs">
+                <button class="tab-btn active" data-target="exp-1">MSA</button>
+                <button class="tab-btn" data-target="exp-2">Maersk</button>
+                <button class="tab-btn" data-target="exp-3">HPE</button>
+                <button class="tab-btn" data-target="exp-4">HPE Intern</button>
+            </div>
+            <div class="experience-content">
+                <div class="experience-item active" id="exp-1">
+                    <div class="experience-header">
+                        <div class="exp-title-wrapper">
+                            <h3>Business Analytics Associate II</h3>
+                            <div class="exp-company">
+                                <i class="fas fa-building"></i> Management Science Associates, Inc.
+                            </div>
+                            <div class="exp-duration">
+                                <i class="far fa-calendar-alt"></i> July 2024 - Present
+                            </div>
+                        </div>
+                        <div class="exp-tag">Full-time</div>
+                    </div>
+                    <div class="exp-responsibilities">
+                        <ul>
+                            <li>Designed a streamlined workflow, reducing client onboarding time by 35% and saving $50K per client.</li>
+                            <li>Built a retailer enrollment module, cutting retailer onboarding errors by 40% and improving data accuracy by 30%.</li>
+                            <li>Enhanced the Portal product, driving a 30% increase in user adoption across CPG clients.</li>
+                            <li>Engineered data management solutions, reducing reporting timelines by 25% and saving $100K monthly for Hershey's and Coca-Cola.</li>
+                            <li>Developed a unified data factory, improving data integration efficiency by 50% and reducing operational costs by $55K monthly.</li>
+                            <li>Collaborated with stakeholders, accelerating feature delivery speed by 25%, enabling faster go-to-market timelines.</li>
+                        </ul>
+                    </div>
+                    <div class="exp-metrics">
+                        <div class="metric-item">
+                            <div class="metric-value">35%</div>
+                            <div class="metric-label">Faster Onboarding</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">40%</div>
+                            <div class="metric-label">Error Reduction</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">$100K</div>
+                            <div class="metric-label">Monthly Savings</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">50%</div>
+                            <div class="metric-label">Efficiency Increase</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="experience-item" id="exp-2">
+                    <div class="experience-header">
+                        <div class="exp-title-wrapper">
+                            <h3>Data Scientist</h3>
+                            <div class="exp-company">
+                                <i class="fas fa-building"></i> A.P Moller - Maersk
+                            </div>
+                            <div class="exp-duration">
+                                <i class="far fa-calendar-alt"></i> Oct 2023 - May 2024
+                            </div>
+                        </div>
+                        <div class="exp-tag">Intern</div>
+                    </div>
+                    <div class="exp-responsibilities">
+                        <ul>
+                            <li>Led Maersk Prophet Model development, improving financial prediction accuracy and strategic planning.</li>
+                            <li>Enhanced data processing and fine-tuned model, increasing forecast efficiency by 30% with new profit/loss metrics.</li>
+                            <li>Synthesized complex financial forecasts into accessible visual narratives using Tableau, engendering a 25% uptick in stakeholder engagement with actionable insights into Maersk's landside business performance.</li>
+                        </ul>
+                    </div>
+                    <div class="exp-metrics">
+                        <div class="metric-item">
+                            <div class="metric-value">30%</div>
+                            <div class="metric-label">Forecast Efficiency</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">25%</div>
+                            <div class="metric-label">Stakeholder Engagement</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="experience-item" id="exp-3">
+                    <div class="experience-header">
+                        <div class="exp-title-wrapper">
+                            <h3>Enterprise and Data Analytics Engineer I</h3>
+                            <div class="exp-company">
+                                <i class="fas fa-building"></i> Hewlett Packard Enterprise (HPE)
+                            </div>
+                            <div class="exp-duration">
+                                <i class="far fa-calendar-alt"></i> Aug 2022 - Jul 2023
+                            </div>
+                        </div>
+                        <div class="exp-tag">Full-time</div>
+                    </div>
+                    <div class="exp-responsibilities">
+                        <ul>
+                            <li>Revamped data migration processes in the EDWR project, yielding a 40% increase in query performance, elevating data quality by 75%, and slashing data management costs by $500k monthly.</li>
+                            <li>Devised standard procedures and playbooks, expediting the onboarding of downstream users for migration projects by 45%.</li>
+                            <li>Streamlined data lineage and engineered quality dashboards, halving troubleshooting time from 4 to 2 hours per issue.</li>
+                            <li>Attained recognition from HPE leadership for developing key components in eight EDW system workstreams, leading to a 92% completion rate and boosted data system efficiency.</li>
+                        </ul>
+                    </div>
+                    <div class="exp-metrics">
+                        <div class="metric-item">
+                            <div class="metric-value">40%</div>
+                            <div class="metric-label">Performance Increase</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">75%</div>
+                            <div class="metric-label">Data Quality Improvement</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">$500K</div>
+                            <div class="metric-label">Monthly Cost Savings</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">92%</div>
+                            <div class="metric-label">Completion Rate</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="experience-item" id="exp-4">
+                    <div class="experience-header">
+                        <div class="exp-title-wrapper">
+                            <h3>Data and Reporting Analyst</h3>
+                            <div class="exp-company">
+                                <i class="fas fa-building"></i> Hewlett Packard Enterprise (HPE)
+                            </div>
+                            <div class="exp-duration">
+                                <i class="far fa-calendar-alt"></i> Feb 2022 - Aug 2022
+                            </div>
+                        </div>
+                        <div class="exp-tag">Intern</div>
+                    </div>
+                    <div class="exp-responsibilities">
+                        <ul>
+                            <li>Revitalized incident response workflows with Python automation, slashing response-related expenses by $200k annually.</li>
+                            <li>Engineered a Python and Rasa chatbot, streamlining Level 1 query handling and saving 8 labor hours monthly.</li>
+                            <li>Formulated a Python and Power BI-based tool to scrutinize daily refresh rates, boosting data discrepancy identification efficiency threefold.</li>
+                            <li>Achieved EAP Game Changer Award for automation initiatives that significantly improved operational efficiency, reducing process time by 67%.</li>
+                        </ul>
+                    </div>
+                    <div class="exp-metrics">
+                        <div class="metric-item">
+                            <div class="metric-value">$200K</div>
+                            <div class="metric-label">Annual Savings</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">8</div>
+                            <div class="metric-label">Labor Hours Saved Monthly</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">3x</div>
+                            <div class="metric-label">Efficiency Increase</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">67%</div>
+                            <div class="metric-label">Process Time Reduction</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">My Work</span>
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-desc">A selection of innovative projects showcasing my analytical capabilities and technical expertise.</p>
+            </div>
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="data-analysis">Data Analysis</button>
+                <button class="filter-btn" data-filter="machine-learning">Machine Learning</button>
+                <button class="filter-btn" data-filter="dashboard">Dashboards</button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-category="machine-learning dashboard">
+                    <div class="project-img">BEV Market Segmentation</div>
+                    <div class="project-content">
+                        <span class="project-tag">Case Competition</span>
+                        <h3 class="project-title">Honda BEV Market Segmentation</h3>
+                        <p class="project-desc">Developed a comprehensive market segmentation analysis for Honda's Battery Electric Vehicle (BEV) strategy, resulting in a targeted approach to capture market growth opportunities.</p>
+                        <div class="project-stats">
+                            <div class="project-stat">
+                                <div class="stat-value">12%</div>
+                                <div class="stat-label">Market Growth</div>
+                            </div>
+                            <div class="project-stat">
+                                <div class="stat-value">20%</div>
+                                <div class="stat-label">Engagement Increase</div>
+                            </div>
+                            <div class="project-stat">
+                                <div class="stat-value">1st</div>
+                                <div class="stat-label">Place Finish</div>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">
+                                <i class="fas fa-eye"></i> Case Study
+                            </a>
+                            <a href="#" class="project-link secondary">
+                                <i class="fas fa-chart-line"></i> Dashboard
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-category="machine-learning">
+                    <div class="project-img">Movie Connect 2.0</div>
+                    <div class="project-content">
+                        <span class="project-tag">Google Hackathon</span>
+                        <h3 class="project-title">Movie Connect using PaLM 2</h3>
+                        <p class="project-desc">Integrated Google's PaLM 2 large language model to create an advanced movie recommendation system with enhanced user personalization and engagement features.</p>
+                        <div class="project-stats">
+                            <div class="project-stat">
+                                <div class="stat-value">40%</div>
+                                <div class="stat-label">Recommendation Accuracy</div>
+                            </div>
+                            <div class="project-stat">
+                                <div class="stat-value">25%</div>
+                                <div class="stat-label">Engagement Increase</div>
+                            </div>
+                            <div class="project-stat">
+                                <div class="stat-value">34s</div>
+                                <div class="stat-label">Search Time Reduction</div>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">
+                                <i class="fas fa-eye"></i> Case Study
+                            </a>
+                            <a href="#" class="project-link secondary">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-category="data-analysis machine-learning">
+                    <div class="project-img">Urban Eatery</div>
+                    <div class="project-content">
+                        <span class="project-tag">Research Project</span>
+                        <h3 class="project-title">Urban Eatery: Restaurant Recommender</h3>
+                        <p class="project-desc">Developed a machine learning-based restaurant recommendation system that personalizes suggestions based on user preferences, location, and dining history.</p>
+                        <div class="project-stats">
+                            <div class="project-stat">
+                                <div class="stat-value">Published</div>
+                                <div class="stat-label">IACIT-2022</div>
+                            </div>
+                            <div class="project-stat">
+                                <div class="stat-value">Patented</div>
+                                <div class="stat-label">KSCST</div>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">
+                                <i class="fas fa-file-alt"></i> Publication
+                            </a>
+                            <a href="#" class="project-link secondary">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="insights">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Business Impact</span>
+                <h2 class="section-title">Analytics Insights</h2>
+                <p class="section-desc">Key insights and measurable outcomes from my analytical projects and implementations.</p>
+            </div>
+            <div class="insights-container">
+                <div class="insight-card">
+                    <h3 class="insight-title">Optimizing Client Onboarding Workflows</h3>
+                    <p class="insight-desc">Through a detailed analysis of the client onboarding process, I identified several bottlenecks and inefficiencies that were leading to extended onboarding times and increased costs. By implementing a streamlined workflow with automated checkpoints and standardized documentation, we achieved significant improvements in efficiency and cost reduction.</p>
+                    <div class="insight-metrics">
+                        <div class="insight-metric">
+                            <div class="insight-value">35%</div>
+                            <div class="insight-label">Reduction in Onboarding Time</div>
+                        </div>
+                        <div class="insight-metric">
+                            <div class="insight-value">$50K</div>
+                            <div class="insight-label">Savings per Client</div>
+                        </div>
+                        <div class="insight-metric">
+                            <div class="insight-value">60%</div>
+                            <div class="insight-label">Manual Task Reduction</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-placeholder">
+                            <i class="fas fa-chart-line"></i>
+                            <p>Client Onboarding Time Reduction Visualization</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="insight-card">
+                    <h3 class="insight-title">Data Quality Enhancement in Enterprise Systems</h3>
+                    <p class="insight-desc">For the Enterprise Data Warehouse Replatforming (EDWR) project at HPE, I implemented comprehensive data quality frameworks that addressed issues at multiple levels: source data validation, transformation logic verification, and output data consistency checks. This multi-layered approach significantly improved data reliability and system performance.</p>
+                    <div class="insight-metrics">
+                        <div class="insight-metric">
+                            <div class="insight-value">75%</div>
+                            <div class="insight-label">Data Quality Improvement</div>
+                        </div>
+                        <div class="insight-metric">
+                            <div class="insight-value">40%</div>
+                            <div class="insight-label">Query Performance Increase</div>
+                        </div>
+                        <div class="insight-metric">
+                            <div class="insight-value">$500K</div>
+                            <div class="insight-label">Monthly Cost Reduction</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-placeholder">
+                            <i class="fas fa-database"></i>
+                            <p>Data Quality Improvement Metrics Dashboard</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="insight-card">
+                    <h3 class="insight-title">Financial Forecasting Optimization at Maersk</h3>
+                    <p class="insight-desc">The Maersk Prophet Model I developed incorporated advanced time-series algorithms with contextual business variables to create more accurate financial forecasts. By refining the data processing pipeline and implementing robust validation mechanisms, we achieved substantial improvements in forecast accuracy and efficiency.</p>
+                    <div class="insight-metrics">
+                        <div class="insight-metric">
+                            <div class="insight-value">30%</div>
+                            <div class="insight-label">Forecast Efficiency Increase</div>
+                        </div>
+                        <div class="insight-metric">
+                            <div class="insight-value">25%</div>
+                            <div class="insight-label">Stakeholder Engagement</div>
+                        </div>
+                        <div class="insight-metric">
+                            <div class="insight-value">45%</div>
+                            <div class="insight-label">Decision Confidence</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-placeholder">
+                            <i class="fas fa-chart-area"></i>
+                            <p>Financial Forecast Accuracy Comparison</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">My Expertise</span>
+                <h2 class="section-title">Professional Skills</h2>
+                <p class="section-desc">A comprehensive set of technical and business skills honed through education and professional experience.</p>
+            </div>
+            <div class="skills-container">
+                <div class="skills-category">
+                    <div class="skills-header">
+                        <div class="skills-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="skills-title">Technical Skills</h3>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Python Programming</span>
+                            <span class="skill-percentage">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">R Programming</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">SQL & Database Management</span>
+                            <span class="skill-percentage">92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Machine Learning</span>
+                            <span class="skill-percentage">88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Data Visualization</span>
+                            <span class="skill-percentage">94%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 94%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">ETL Processes</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skills-category">
+                    <div class="skills-header">
+                        <div class="skills-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3 class="skills-title">Business Skills</h3>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Business Analysis</span>
+                            <span class="skill-percentage">96%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 96%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Requirements Gathering</span>
+                            <span class="skill-percentage">92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Process Modeling</span>
+                            <span class="skill-percentage">88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Stakeholder Management</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Agile Methodologies</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Project Management</span>
+                            <span class="skill-percentage">82%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 82%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-header" style="margin-top: 4rem; margin-bottom: 2rem;">
+                <h3 class="section-title" style="font-size: 1.75rem;">Tools & Technologies</h3>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="tool-name">Tableau</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="tool-name">Power BI</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="tool-name">MongoDB</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="tool-name">MySQL</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-table"></i>
+                    </div>
+                    <div class="tool-name">Presto SQL</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <div class="tool-name">Git</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="tool-name">Jira</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="tool-name">Confluence</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="tool-name">Scikit-learn</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="tool-name">Matplotlib</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-stream"></i>
+                    </div>
+                    <div class="tool-name">Streamlit</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="tool-name">UML</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="publications">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Research Work</span>
+                <h2 class="section-title">Publications</h2>
+                <p class="section-desc">Research contributions in machine learning applications and analytical methodologies.</p>
+            </div>
+            <div class="publications-grid">
+                <div class="publication-card">
+                    <div class="publication-img">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="publication-content">
+                        <h3 class="publication-title">"Urban Eatery: Restaurant Recommender using Machine Learning"</h3>
+                        <div class="publication-info">
+                            <i class="fas fa-book"></i>
+                            <span class="publication-journal">IACIT-2022</span>
+                        </div>
+                        <p>A novel restaurant recommendation system utilizing collaborative filtering and content-based approaches to provide personalized dining suggestions based on user preferences and behavioral patterns.</p>
+                        <div class="publication-actions">
+                            <a href="#" class="publication-btn primary">
+                                <i class="fas fa-external-link-alt"></i> View on Scopus
+                            </a>
+                            <a href="#" class="publication-btn secondary">
+                                <i class="fas fa-file-pdf"></i> PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="publication-card">
+                    <div class="publication-img">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="publication-content">
+                        <h3 class="publication-title">"Detection of Dementia Using Machine Learning"</h3>
+                        <div class="publication-info">
+                            <i class="fas fa-book"></i>
+                            <span class="publication-journal">IRJMETS, Vol. 3, Issue 8, August 2021</span>
+                        </div>
+                        <p>A research study exploring the application of machine learning algorithms for early detection of dementia based on cognitive assessment data and neuroimaging features.</p>
+                        <div class="publication-actions">
+                            <a href="#" class="publication-btn primary">
+                                <i class="fas fa-external-link-alt"></i> View on IRJMETS
+                            </a>
+                            <a href="#" class="publication-btn secondary">
+                                <i class="fas fa-file-pdf"></i> PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Get In Touch</span>
+                <h2 class="section-title">Contact Me</h2>
+                <p class="section-desc">Interested in working together? Feel free to reach out through any of the channels below.</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p class="contact-desc">Whether you have a project in mind, a business challenge that needs solving, or just want to discuss the latest in data analytics, I'm always open to new conversations and opportunities.</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p><a href="mailto:skallaha@tepper.cmu.edu">skallaha@tepper.cmu.edu</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p><a href="tel:+14122872226">+1 (412) 287-2226</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Location</h4>
+                                <p>Pittsburgh, PA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" id="name" class="form-input" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Your Email</label>
+                            <input type="email" id="email" class="form-input" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" class="form-input" placeholder="Enter subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" class="form-textarea" placeholder="Enter your message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">Shashank Kallahalli Suresh</div>
+                    <p class="footer-desc">Senior Business Analyst & Data Scientist specializing in business intelligence solutions and machine learning applications.</p>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com/in/skallaha/" class="footer-social-link" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/shashankks0709" class="footer-social-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:skallaha@tepper.cmu.edu" class="footer-social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="#" class="footer-social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
