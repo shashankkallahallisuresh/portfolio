@@ -527,1170 +527,1027 @@
             font-size: 0.9rem;
             margin-bottom: 0;
         }
-        
-        /* Services section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+    </style>
+<style>
+    /* Services section */
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+    
+    .service-card {
+        background-color: white;
+        border-radius: 1rem;
+        box-shadow: var(--card-shadow);
+        padding: 2rem;
+        transition: var(--smooth-transition);
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+    
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background-color: var(--primary);
+        opacity: 0.05;
+        z-index: -1;
+        transition: var(--smooth-transition);
+    }
+    
+    .service-card:hover {
+        transform: translateY(-10px);
+    }
+    
+    .service-card:hover::before {
+        height: 100%;
+    }
+    
+    .service-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 0.5rem;
+        background-color: rgba(37, 99, 235, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+        transition: var(--smooth-transition);
+    }
+    
+    .service-card:hover .service-icon {
+        background-color: var(--primary);
+        color: white;
+    }
+    
+    .service-title {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        position: relative;
+        padding-bottom: 1rem;
+    }
+    
+    .service-title::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 50px;
+        height: 2px;
+        background-color: var(--primary);
+        transition: var(--smooth-transition);
+    }
+    
+    .service-card:hover .service-title::after {
+        width: 100px;
+    }
+    
+    .service-desc {
+        color: var(--gray);
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Experience section */
+    .experience-tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .tab-btn {
+        padding: 0.75rem 1.5rem;
+        background-color: white;
+        border: none;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--smooth-transition);
+        font-size: 0.95rem;
+        color: var(--gray);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .tab-btn.active {
+        background-color: var(--primary);
+        color: white;
+    }
+    
+    .tab-btn:hover:not(.active) {
+        background-color: var(--light-gray);
+    }
+    
+    .experience-content {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: 1rem;
+        box-shadow: var(--card-shadow);
+        padding: 2rem;
+    }
+    
+    .experience-item {
+        display: none;
+    }
+    
+    .experience-item.active {
+        display: block;
+        animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .experience-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--light-gray);
+    }
+    
+    .exp-title-wrapper h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .exp-company {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.1rem;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+    }
+    
+    .exp-duration {
+        color: var(--gray);
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .exp-tag {
+        background-color: rgba(16, 185, 129, 0.1);
+        color: var(--secondary);
+        padding: 0.25rem 0.75rem;
+        border-radius: 2rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+    
+    .exp-responsibilities ul {
+        list-style-position: inside;
+        margin-bottom: 1.5rem;
+    }
+    
+    .exp-responsibilities li {
+        margin-bottom: 0.75rem;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+    
+    .exp-responsibilities li::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+        font-weight: bold;
+    }
+    
+    .exp-metrics {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .metric-item {
+        background-color: var(--light-gray);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        text-align: center;
+    }
+    
+    .metric-value {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+    }
+    
+    .metric-label {
+        font-size: 0.9rem;
+        color: var(--gray);
+    }
+    
+    /* Projects section */
+    .projects-filter {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .filter-btn {
+        padding: 0.5rem 1rem;
+        background-color: white;
+        border: none;
+        border-radius: 2rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--smooth-transition);
+        font-size: 0.9rem;
+        color: var(--gray);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .filter-btn.active {
+        background-color: var(--primary);
+        color: white;
+    }
+    
+    .filter-btn:hover:not(.active) {
+        background-color: var(--light-gray);
+    }
+    
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2.5rem;
+    }
+    
+    .project-card {
+        background-color: white;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        transition: var(--smooth-transition);
+        position: relative;
+    }
+    
+    .project-card:hover {
+        transform: translateY(-10px);
+    }
+    
+    .project-img {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(to right, var(--primary), var(--accent));
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    
+    .project-content {
+        padding: 1.5rem;
+    }
+    
+    .project-tag {
+        display: inline-block;
+        background-color: rgba(37, 99, 235, 0.1);
+        color: var(--primary);
+        padding: 0.25rem 0.75rem;
+        border-radius: 2rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+    }
+    
+    .project-title {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+    
+    .project-desc {
+        color: var(--gray);
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+    }
+    
+    .project-stats {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .project-stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .stat-value {
+        font-weight: 700;
+        color: var(--dark);
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+        color: var(--gray);
+    }
+    
+    .project-links {
+        display: flex;
+        gap: 1rem;
+    }
+    
+    .project-link {
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .project-link.primary {
+        background-color: var(--primary);
+        color: white;
+    }
+    
+    .project-link.secondary {
+        background-color: var(--light-gray);
+        color: var(--dark);
+    }
+</style>
+<style>
+    /* Skills section */
+    .skills-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+    
+    .skills-category {
+        background-color: white;
+        border-radius: 1rem;
+        box-shadow: var(--card-shadow);
+        padding: 2rem;
+    }
+    
+    .skills-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--light-gray);
+    }
+    
+    .skills-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 0.5rem;
+        background-color: rgba(37, 99, 235, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 1.25rem;
+    }
+    
+    .skills-title {
+        font-size: 1.25rem;
+    }
+    
+    .skill-item {
+        margin-bottom: 1.5rem;
+    }
+    
+    .skill-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+    }
+    
+    .skill-name {
+        font-weight: 500;
+    }
+    
+    .skill-percentage {
+        color: var(--gray);
+    }
+    
+    .skill-bar {
+        width: 100%;
+        height: 10px;
+        background-color: var(--light-gray);
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    
+    .skill-progress {
+        height: 100%;
+        background-color: var(--primary);
+        border-radius: 5px;
+    }
+    
+    .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+    
+    .tool-item {
+        background-color: var(--light-gray);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        text-align: center;
+        transition: var(--smooth-transition);
+    }
+    
+    .tool-item:hover {
+        background-color: rgba(37, 99, 235, 0.1);
+    }
+    
+    .tool-icon {
+        font-size: 1.5rem;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+    }
+    
+    .tool-name {
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+    
+    /* Insights section */
+    .insights-container {
+        padding-top: 1rem;
+    }
+    
+    .insight-card {
+        background-color: white;
+        border-radius: 1rem;
+        box-shadow: var(--card-shadow);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .insight-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background-color: var(--primary);
+    }
+    
+    .insight-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .insight-desc {
+        color: var(--gray);
+        margin-bottom: 1.5rem;
+    }
+    
+    .insight-metrics {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .insight-metric {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .insight-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+    }
+    
+    .insight-label {
+        font-size: 0.9rem;
+        color: var(--gray);
+    }
+    
+    .chart-container {
+        margin-top: 2rem;
+        height: 300px;
+        background-color: var(--light-gray);
+        border-radius: 0.5rem;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    
+    .chart-placeholder {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--gray);
+    }
+    
+    .chart-placeholder i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: var(--primary);
+    }
+    
+    /* Publications section */
+    .publications-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+    
+    .publication-card {
+        background-color: white;
+        border-radius: 1rem;
+        box-shadow: var(--card-shadow);
+        overflow: hidden;
+        transition: var(--smooth-transition);
+    }
+    
+    .publication-card:hover {
+        transform: translateY(-10px);
+    }
+    
+    .publication-img {
+        height: 180px;
+        background: linear-gradient(to right, var(--primary), var(--accent));
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 3rem;
+    }
+    
+    .publication-content {
+        padding: 1.5rem;
+    }
+    
+    .publication-title {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+    
+    .publication-info {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--gray);
+        margin-bottom: 1.5rem;
+    }
+    
+    .publication-journal {
+        font-style: italic;
+    }
+    
+    .publication-actions {
+        display: flex;
+        gap: 1rem;
+    }
+    
+    .publication-btn {
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .publication-btn.primary {
+        background-color: var(--primary);
+        color: white;
+    }
+    
+    .publication-btn.secondary {
+        background-color: var(--light-gray);
+        color: var(--dark);
+    }
+    
+    /* Contact section */
+    .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+    
+    .contact-info h3 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .contact-info h3::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 80px;
+        height: 4px;
+        background-color: var(--primary);
+    }
+    
+    .contact-desc {
+        color: var(--gray);
+        margin-bottom: 2rem;
+    }
+    
+    .contact-methods {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .contact-method {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .contact-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgba(37, 99, 235, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 1.25rem;
+    }
+    
+    .contact-text h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    .contact-text p {
+        color: var(--gray);
+        font-size: 0.95rem;
+    }
+    
+    .contact-form {
+        background-color: white;
+        border-radius: 1rem;
+        box-shadow: var(--card-shadow);
+        padding: 2rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+    }
+    
+    .form-input,
+    .form-textarea {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        border: 1px solid var(--light-gray);
+        transition: var(--smooth-transition);
+        font-size: 0.95rem;
+    }
+    
+    .form-input:focus,
+    .form-textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    
+    .form-textarea {
+        min-height: 150px;
+        resize: vertical;
+    }
+</style>
+<style>
+    /* Footer */
+    footer {
+        background-color: white;
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+        padding: 4rem 0 0;
+    }
+    
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        margin-bottom: 4rem;
+    }
+    
+    .footer-logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 1rem;
+    }
+    
+    .footer-desc {
+        color: var(--gray);
+        margin-bottom: 1.5rem;
+    }
+    
+    .footer-social {
+        display: flex;
+        gap: 1rem;
+    }
+    
+    .footer-social-link {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--light-gray);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--dark);
+        transition: var(--smooth-transition);
+    }
+    
+    .footer-social-link:hover {
+        background-color: var(--primary);
+        color: white;
+    }
+    
+    .footer-title {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .footer-title::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 40px;
+        height: 3px;
+        background-color: var(--primary);
+    }
+    
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .footer-link {
+        color: var(--gray);
+        transition: var(--smooth-transition);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .footer-link i {
+        font-size: 0.8rem;
+    }
+    
+    .footer-link:hover {
+        color: var(--primary);
+        transform: translateX(5px);
+    }
+    
+    .footer-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .footer-contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .footer-contact-icon {
+        color: var(--primary);
+        font-size: 1.25rem;
+    }
+    
+    .footer-contact-text {
+        color: var(--gray);
+        font-size: 0.95rem;
+    }
+    
+    .footer-bottom {
+        background-color: var(--dark);
+        color: white;
+        text-align: center;
+        padding: 1.5rem 0;
+    }
+    
+    .copyright {
+        font-size: 0.9rem;
+    }
+    
+    /* Media queries */
+    @media screen and (max-width: 991px) {
+        .hero-content,
+        .about-content,
+        .contact-container {
+            grid-template-columns: 1fr;
+            gap: 3rem;
         }
         
-        .service-card {
-            background-color: white;
-            border-radius: 1rem;
-            box-shadow: var(--card-shadow);
-            padding: 2rem;
-            transition: var(--smooth-transition);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
+        .hero-image,
+        .contact-form {
+            grid-row: 1;
         }
         
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 0;
-            background-color: var(--primary);
-            opacity: 0.05;
-            z-index: -1;
-            transition: var(--smooth-transition);
+        .skills-container {
+            grid-template-columns: 1fr;
         }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .service-card:hover::before {
-            height: 100%;
-        }
-        
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 0.5rem;
-            background-color: rgba(37, 99, 235, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 1.75rem;
-            margin-bottom: 1.5rem;
-            transition: var(--smooth-transition);
-        }
-        
-        .service-card:hover .service-icon {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .service-title {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-        
-        .service-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 50px;
-            height: 2px;
-            background-color: var(--primary);
-            transition: var(--smooth-transition);
-        }
-        
-        .service-card:hover .service-title::after {
-            width: 100px;
-        }
-        
-        .service-desc {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-        }
-        
-        /* Experience section */
-        .experience-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        
-        .tab-btn {
-            padding: 0.75rem 1.5rem;
-            background-color: white;
-            border: none;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--smooth-transition);
-            font-size: 0.95rem;
-            color: var(--gray);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .tab-btn.active {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .tab-btn:hover:not(.active) {
-            background-color: var(--light-gray);
-        }
-        
-        .experience-content {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 1rem;
-            box-shadow: var(--card-shadow);
-            padding: 2rem;
-        }
-        
-        .experience-item {
-            display: none;
-        }
-        
-        .experience-item.active {
+    }
+    
+    @media screen and (max-width: 768px) {
+        .menu-toggle {
             display: block;
-            animation: fadeIn 0.5s ease;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
+        .nav-links {
+            position: fixed;
+            top: 80px;
+            left: -100%;
+            width: 80%;
+            height: calc(100vh - 80px);
+            background-color: white;
+            flex-direction: column;
             align-items: flex-start;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--light-gray);
+            padding: 2rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--smooth-transition);
+            z-index: 100;
         }
         
-        .exp-title-wrapper h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .exp-company {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .exp-duration {
-            color: var(--gray);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .exp-tag {
-            background-color: rgba(16, 185, 129, 0.1);
-            color: var(--secondary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 2rem;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        
-        .exp-responsibilities ul {
-            list-style-position: inside;
-            margin-bottom: 1.5rem;
-        }
-        
-        .exp-responsibilities li {
-            margin-bottom: 0.75rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        
-        .exp-responsibilities li::before {
-            content: '✓';
-            position: absolute;
+        .nav-links.show {
             left: 0;
-            color: var(--primary);
-            font-weight: bold;
+        }
+        
+        .about-features {
+            grid-template-columns: 1fr;
         }
         
         .exp-metrics {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: 1fr;
         }
         
-        .metric-item {
-            background-color: var(--light-gray);
-            padding: 1rem;
-            border-radius: 0.5rem;
-            text-align: center;
+        .projects-grid,
+        .publications-grid,
+        .achievements-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    @media screen and (max-width: 576px) {
+        .section-title {
+            font-size: 2rem;
         }
         
-        .metric-value {
+        .hero-text h1 {
+            font-size: 2.5rem;
+        }
+        
+        .about-text h3,
+        .contact-info h3 {
             font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .metric-label {
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-        
-        /* Projects section */
-        .projects-filter {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            background-color: white;
-            border: none;
-            border-radius: 2rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--smooth-transition);
-            font-size: 0.9rem;
-            color: var(--gray);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .filter-btn.active {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .filter-btn:hover:not(.active) {
-            background-color: var(--light-gray);
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2.5rem;
-        }
-        
-        .project-card {
-            background-color: white;
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            transition: var(--smooth-transition);
-            position: relative;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .project-img {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-        
-        .project-content {
-            padding: 1.5rem;
-        }
-        
-        .project-tag {
-            display: inline-block;
-            background-color: rgba(37, 99, 235, 0.1);
-            color: var(--primary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 2rem;
-            font-size: 0.8rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-        
-        .project-title {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-        }
-        
-        .project-desc {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-        
-        .project-stats {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .project-stat {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .stat-value {
-            font-weight: 700;
-            color: var(--dark);
-        }
-        
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--gray);
-        }
-        
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .project-link {
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .project-link.primary {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .project-link.secondary {
-            background-color: var(--light-gray);
-            color: var(--dark);
-        }
-        
-        /* Skills section */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
-        }
-        
-        .skills-category {
-            background-color: white;
-            border-radius: 1rem;
-            box-shadow: var(--card-shadow);
-            padding: 2rem;
-        }
-        
-        .skills-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--light-gray);
-        }
-        
-        .skills-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 0.5rem;
-            background-color: rgba(37, 99, 235, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 1.25rem;
-        }
-        
-        .skills-title {
-            font-size: 1.25rem;
-        }
-        
-        .skill-item {
-            margin-bottom: 1.5rem;
-        }
-        
-        .skill-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-        
-        .skill-name {
-            font-weight: 500;
-        }
-        
-        .skill-percentage {
-            color: var(--gray);
-        }
-        
-        .skill-bar {
-            width: 100%;
-            height: 10px;
-            background-color: var(--light-gray);
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .skill-progress {
-            height: 100%;
-            background-color: var(--primary);
-            border-radius: 5px;
         }
         
         .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-        }
-        
-        .tool-item {
-            background-color: var(--light-gray);
-            border-radius: 0.5rem;
-            padding: 1rem;
-            text-align: center;
-            transition: var(--smooth-transition);
-        }
-        
-        .tool-item:hover {
-            background-color: rgba(37, 99, 235, 0.1);
-        }
-        
-        .tool-icon {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .tool-name {
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-        
-        /* Insights section */
-        .insights-container {
-            padding-top: 1rem;
-        }
-        
-        .insight-card {
-            background-color: white;
-            border-radius: 1rem;
-            box-shadow: var(--card-shadow);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .insight-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background-color: var(--primary);
-        }
-        
-        .insight-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .insight-desc {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-        }
-        
-        .insight-metrics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .insight-metric {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        
-        .insight-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .insight-label {
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-        
-        .chart-container {
-            margin-top: 2rem;
-            height: 300px;
-            background-color: var(--light-gray);
-            border-radius: 0.5rem;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .chart-placeholder {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray);
-        }
-        
-        .chart-placeholder i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        
-        /* Testimonials section */
-        .testimonials-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .testimonial-card {
-            background-color: white;
-            border-radius: 1rem;
-            box-shadow: var(--card-shadow);
-            padding: 2rem;
-            margin: 0 auto;
-            position: relative;
-            max-width: 800px;
-        }
-        
-        .testimonial-quote {
-            position: absolute;
-            top: -15px;
-            left: 30px;
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            color: var(--gray);
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .author-image {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-color: var(--light-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-weight: 700;
-        }
-        
-        .author-info h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
-        }
-        
-        .author-position {
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-        
-        .testimonial-rating {
-            display: flex;
-            gap: 0.25rem;
-            margin-top: 0.5rem;
-        }
-        
-        .rating-star {
-            color: #fbbf24;
-        }
-        
-        /* Publications section */
-        .publications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .publication-card {
-            background-color: white;
-            border-radius: 1rem;
-            box-shadow: var(--card-shadow);
-            overflow: hidden;
-            transition: var(--smooth-transition);
-        }
-        
-        .publication-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .publication-img {
-            height: 180px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-        
-        .publication-content {
-            padding: 1.5rem;
-        }
-        
-        .publication-title {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-        }
-        
-        .publication-info {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-        }
-        
-        .publication-journal {
-            font-style: italic;
-        }
-        
-        .publication-actions {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .publication-btn {
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .publication-btn.primary {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .publication-btn.secondary {
-            background-color: var(--light-gray);
-            color: var(--dark);
-        }
-        
-        /* Achievements section */
-        .achievements-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .achievement-card {
-            background-color: white;
-            border-radius: 1rem;
-            box-shadow: var(--card-shadow);
-            overflow: hidden;
-            transition: var(--smooth-transition);
-            position: relative;
-        }
-        
-        .achievement-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .achievement-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background-color: rgba(37, 99, 235, 0.1);
-            border-radius: 0 0 0 100%;
-            z-index: 1;
-        }
-        
-        .achievement-icon {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2rem;
-            color: var(--primary);
-            z-index: 2;
-        }
-        
-        .achievement-content {
-            padding: 2rem;
-        }
-        
-        .achievement-date {
-            display: inline-block;
-            background-color: rgba(16, 185, 129, 0.1);
-            color: var(--secondary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 2rem;
-            font-size: 0.8rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-        
-        .achievement-title {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-        }
-        
-        .achievement-desc {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-        
-        /* Contact section */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .contact-info h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .contact-info h3::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -10px;
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary);
-        }
-        
-        .contact-desc {
-            color: var(--gray);
-            margin-bottom: 2rem;
-        }
-        
-        .contact-methods {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        
-        .contact-method {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: rgba(37, 99, 235, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 1.25rem;
-        }
-        
-        .contact-text h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
-        }
-        
-        .contact-text p {
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
-        
-        .contact-form {
-            background-color: white;
-            border-radius: 1rem;
-            box-shadow: var(--card-shadow);
-            padding: 2rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-input,
-        .form-textarea {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            border: 1px solid var(--light-gray);
-            transition: var(--smooth-transition);
-            font-size: 0.95rem;
-        }
-        
-        .form-input:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-        
-        .form-textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: white;
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
-            padding: 4rem 0 0;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 4rem;
-        }
-        
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        
-        .footer-desc {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-        }
-        
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .footer-social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--light-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark);
-            transition: var(--smooth-transition);
-        }
-        
-        .footer-social-link:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .footer-title {
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .footer-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -8px;
-            width: 40px;
-            height: 3px;
-            background-color: var(--primary);
-        }
-        
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-        
-        .footer-link {
-            color: var(--gray);
-            transition: var(--smooth-transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .footer-link i {
-            font-size: 0.8rem;
-        }
-        
-        .footer-link:hover {
-            color: var(--primary);
-            transform: translateX(5px);
-        }
-        
-        .footer-contact {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .footer-contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-        
-        .footer-contact-icon {
-            color: var(--primary);
-            font-size: 1.25rem;
-        }
-        
-        .footer-contact-text {
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
-        
-        .footer-bottom {
-            background-color: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 1.5rem 0;
-        }
-        
-        .copyright {
-            font-size: 0.9rem;
-        }
-        
-        /* Media queries */
-        @media screen and (max-width: 991px) {
-            .hero-content,
-            .about-content,
-            .contact-container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Experience tabs functionality
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const expItems = document.querySelectorAll('.experience-item');
+    
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove active class from all buttons and items
+            tabBtns.forEach(b => b.classList.remove('active'));
+            expItems.forEach(item => item.classList.remove('active'));
             
-            .hero-image,
-            .contact-form {
-                grid-row: 1;
-            }
+            // Add active class to clicked button
+            this.classList.add('active');
             
-            .skills-container {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media screen and (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
+            // Show corresponding experience item
+            const targetId = this.getAttribute('data-target');
+            document.getElementById(targetId).classList.add('active');
+        });
+    });
+    
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('show');
+        });
+    }
+    
+    // Smooth scrolling for navigation links
+    const navAnchors = document.querySelectorAll('.nav-link');
+    
+    navAnchors.forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
             
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 80%;
-                height: calc(100vh - 80px);
-                background-color: white;
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 2rem;
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-                transition: var(--smooth-transition);
-                z-index: 100;
-            }
-            
-            .nav-links.show {
-                left: 0;
-            }
-            
-            .about-features {
-                grid-template-columns: 1fr;
-            }
-            
-            .exp-metrics {
-                grid-template-columns: 1fr;
-            }
-            
-            .projects-grid,
-            .publications-grid,
-            .achievements-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media screen and (max-width: 576px) {
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-            
-            .about-text h3,
-            .contact-info h3 {
-                font-size: 1.75rem;
-            }
-            
-            .tools-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Experience tabs functionality
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const expItems = document.querySelectorAll('.experience-item');
-        
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Remove active class from all buttons and items
-                tabBtns.forEach(b => b.classList.remove('active'));
-                expItems.forEach(item => item.classList.remove('active'));
+            if (targetSection) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
                 
-                // Add active class to clicked button
+                // Update active nav link
+                navAnchors.forEach(a => a.classList.remove('active'));
                 this.classList.add('active');
                 
-                // Show corresponding experience item
-                const targetId = this.getAttribute('data-target');
-                document.getElementById(targetId).classList.add('active');
-            });
+                // Hide mobile menu after clicking
+                if (navLinks.classList.contains('show')) {
+                    navLinks.classList.remove('show');
+                }
+            }
         });
-        
-        // Mobile menu toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        
-        if (menuToggle) {
-            menuToggle.addEventListener('click', function() {
-                navLinks.classList.toggle('show');
-            });
-        }
-        
-        // Smooth scrolling for navigation links
-        const navAnchors = document.querySelectorAll('.nav-link');
-        
-        navAnchors.forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                if (targetSection) {
-                    e.preventDefault();
-                    window.scrollTo({
-                        top: targetSection.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Update active nav link
-                    navAnchors.forEach(a => a.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Hide mobile menu after clicking
-                    if (navLinks.classList.contains('show')) {
-                        navLinks.classList.remove('show');
+    });
+    
+    // Project filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove active class from all filter buttons
+            filterBtns.forEach(b => b.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const filterValue = this.getAttribute('data-filter');
+            
+            // Show/hide projects based on filter
+            projectCards.forEach(card => {
+                if (filterValue === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    if (card.getAttribute('data-category').includes(filterValue)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
                     }
                 }
             });
         });
-        
-        // Project filtering
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-        
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Remove active class from all filter buttons
-                filterBtns.forEach(b => b.classList.remove('active'));
-                
-                // Add active class to clicked button
-                this.classList.add('active');
-                
-                const filterValue = this.getAttribute('data-filter');
-                
-                // Show/hide projects based on filter
-                projectCards.forEach(card => {
-                    if (filterValue === 'all') {
-                        card.style.display = 'block';
-                    } else {
-                        if (card.getAttribute('data-category').includes(filterValue)) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    }
-                });
-            });
-        });
     });
+});
 </script>   
 </head>
 <body>
@@ -1739,7 +1596,7 @@
                             <a href="https://linkedin.com/in/skallaha/" class="social-link" target="_blank">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
-                            <a href="https://github.com/shashankks0709" class="social-link" target="_blank">
+                            <a href="https://github.com/shashankkallahallisuresh" class="social-link" target="_blank">
                                 <i class="fab fa-github"></i>
                             </a>
                             <a href="mailto:skallaha@tepper.cmu.edu" class="social-link">
@@ -1833,7 +1690,6 @@
             </div>
         </div>
     </section>
-    
     <section id="services" style="background-color: var(--light-gray);">
         <div class="container">
             <div class="section-header">
@@ -2088,7 +1944,6 @@
             </div>
         </div>
     </section>
-    
     <section id="projects" style="background-color: var(--light-gray);">
         <div class="container">
             <div class="section-header">
@@ -2124,11 +1979,11 @@
                             </div>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link primary">
-                                <i class="fas fa-eye"></i> Case Study
+                            <a href="https://github.com/shashankkallahallisuresh/BEV-market-segmentation-Honda-Case-Competition-" class="project-link primary" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
                             </a>
-                            <a href="#" class="project-link secondary">
-                                <i class="fas fa-chart-line"></i> Dashboard
+                            <a href="https://github.com/shashankkallahallisuresh/BEV-market-segmentation-Honda-Case-Competition-" class="project-link secondary" target="_blank">
+                                <i class="fas fa-chart-line"></i> Case Study
                             </a>
                         </div>
                     </div>
@@ -2154,11 +2009,11 @@
                             </div>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link primary">
-                                <i class="fas fa-eye"></i> Case Study
-                            </a>
-                            <a href="#" class="project-link secondary">
+                            <a href="https://github.com/shashankkallahallisuresh/Movie-Recommendation-System-using-Palm-2" class="project-link primary" target="_blank">
                                 <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://github.com/shashankkallahallisuresh/Movie-Recommendation-System-using-Palm-2" class="project-link secondary" target="_blank">
+                                <i class="fas fa-eye"></i> Case Study
                             </a>
                         </div>
                     </div>
@@ -2180,10 +2035,10 @@
                             </div>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link primary">
+                            <a href="https://www.riverpublishers.com/pdf/ebook/chapter/RP_9788770229005C16.pdf" class="project-link primary" target="_blank">
                                 <i class="fas fa-file-alt"></i> Publication
                             </a>
-                            <a href="#" class="project-link secondary">
+                            <a href="https://github.com/shashankkallahallisuresh" class="project-link secondary" target="_blank">
                                 <i class="fab fa-github"></i> GitHub
                             </a>
                         </div>
@@ -2192,7 +2047,6 @@
             </div>
         </div>
     </section>
-    
     <section id="insights">
         <div class="container">
             <div class="section-header">
@@ -2512,10 +2366,10 @@
                         </div>
                         <p>A novel restaurant recommendation system utilizing collaborative filtering and content-based approaches to provide personalized dining suggestions based on user preferences and behavioral patterns.</p>
                         <div class="publication-actions">
-                            <a href="#" class="publication-btn primary">
-                                <i class="fas fa-external-link-alt"></i> View on Scopus
+                            <a href="https://www.riverpublishers.com/pdf/ebook/chapter/RP_9788770229005C16.pdf" class="publication-btn primary" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> View Publication
                             </a>
-                            <a href="#" class="publication-btn secondary">
+                            <a href="https://www.riverpublishers.com/pdf/ebook/chapter/RP_9788770229005C16.pdf" class="publication-btn secondary" target="_blank">
                                 <i class="fas fa-file-pdf"></i> PDF
                             </a>
                         </div>
@@ -2533,10 +2387,10 @@
                         </div>
                         <p>A research study exploring the application of machine learning algorithms for early detection of dementia based on cognitive assessment data and neuroimaging features.</p>
                         <div class="publication-actions">
-                            <a href="#" class="publication-btn primary">
+                            <a href="https://www.irjmets.com/uploadedfiles/paper/volume_3/issue_8_august_2021/15836/final/fin_irjmets1629954296.pdf" class="publication-btn primary" target="_blank">
                                 <i class="fas fa-external-link-alt"></i> View on IRJMETS
                             </a>
-                            <a href="#" class="publication-btn secondary">
+                            <a href="https://www.irjmets.com/uploadedfiles/paper/volume_3/issue_8_august_2021/15836/final/fin_irjmets1629954296.pdf" class="publication-btn secondary" target="_blank">
                                 <i class="fas fa-file-pdf"></i> PDF
                             </a>
                         </div>
@@ -2545,7 +2399,6 @@
             </div>
         </div>
     </section>
-    
     <section id="contact" style="background-color: var(--light-gray);">
         <div class="container">
             <div class="section-header">
@@ -2588,22 +2441,22 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form>
+                    <form id="contactForm" onsubmit="sendEmail(event)">
                         <div class="form-group">
                             <label for="name" class="form-label">Your Name</label>
-                            <input type="text" id="name" class="form-input" placeholder="Enter your name">
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name" required>
                         </div>
                         <div class="form-group">
                             <label for="email" class="form-label">Your Email</label>
-                            <input type="email" id="email" class="form-input" placeholder="Enter your email">
+                            <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
                         </div>
                         <div class="form-group">
                             <label for="subject" class="form-label">Subject</label>
-                            <input type="text" id="subject" class="form-input" placeholder="Enter subject">
+                            <input type="text" id="subject" name="subject" class="form-input" placeholder="Enter subject" required>
                         </div>
                         <div class="form-group">
                             <label for="message" class="form-label">Message</label>
-                            <textarea id="message" class="form-textarea" placeholder="Enter your message"></textarea>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="Enter your message" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
                     </form>
@@ -2622,7 +2475,7 @@
                         <a href="https://linkedin.com/in/skallaha/" class="footer-social-link" target="_blank">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://github.com/shashankks0709" class="footer-social-link" target="_blank">
+                        <a href="https://github.com/shashankkallahallisuresh" class="footer-social-link" target="_blank">
                             <i class="fab fa-github"></i>
                         </a>
                         <a href="mailto:skallaha@tepper.cmu.edu" class="footer-social-link">
@@ -2633,4 +2486,86 @@
                         </a>
                     </div>
                 </div>
-                
+                <div>
+                    <h3 class="footer-title">Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="#home" class="footer-link"><i class="fas fa-chevron-right"></i> Home</a>
+                        <a href="#about" class="footer-link"><i class="fas fa-chevron-right"></i> About</a>
+                        <a href="#services" class="footer-link"><i class="fas fa-chevron-right"></i> Services</a>
+                        <a href="#experience" class="footer-link"><i class="fas fa-chevron-right"></i> Experience</a>
+                        <a href="#projects" class="footer-link"><i class="fas fa-chevron-right"></i> Projects</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-title">Services</h3>
+                    <div class="footer-links">
+                        <a href="#services" class="footer-link"><i class="fas fa-chevron-right"></i> Business Intelligence</a>
+                        <a href="#services" class="footer-link"><i class="fas fa-chevron-right"></i> Process Optimization</a>
+                        <a href="#services" class="footer-link"><i class="fas fa-chevron-right"></i> Predictive Analytics</a>
+                        <a href="#services" class="footer-link"><i class="fas fa-chevron-right"></i> Data Management</a>
+                        <a href="#services" class="footer-link"><i class="fas fa-chevron-right"></i> Strategic Consulting</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-title">Contact Information</h3>
+                    <div class="footer-contact">
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="footer-contact-text">
+                                <a href="mailto:skallaha@tepper.cmu.edu">skallaha@tepper.cmu.edu</a>
+                            </div>
+                        </div>
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="footer-contact-text">
+                                <a href="tel:+14122872226">+1 (412) 287-2226</a>
+                            </div>
+                        </div>
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="footer-contact-text">
+                                Pittsburgh, PA
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="copyright">© 2025 Shashank Kallahalli Suresh. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Email functionality script -->
+    <script>
+        function sendEmail(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Construct the mailto link
+            const mailtoLink = `mailto:skallaha@tepper.cmu.edu?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message)}`;
+            
+            // Open the user's email client
+            window.location.href = mailtoLink;
+            
+            // Reset the form after submitting
+            document.getElementById('contactForm').reset();
+            
+            // Show a success message
+            alert('Thank you for your message. Your email client should open shortly.');
+        }
+    </script>
+</body>
+</html>
