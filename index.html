@@ -392,6 +392,17 @@
       padding: 1.6rem;
     }
 
+    .hero-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid #ede9f8;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
     .core-name {
       font-size: 2rem;
       font-weight: 800;
@@ -559,7 +570,7 @@
 
     .toolkit-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.2rem;
       margin-top: 2.1rem;
     }
@@ -604,8 +615,8 @@
     }
 
     .tool-name {
-      font-size: 1.7rem;
-      letter-spacing: -0.02em;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
       line-height: 1.2;
       font-weight: 700;
     }
@@ -1045,9 +1056,19 @@
         font-size: 1.62rem;
       }
 
+      .toolkit-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .tool-title,
       .tool-name {
         font-size: 1.32rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .toolkit-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -1098,6 +1119,7 @@
               <span class="url">shashank.me</span>
             </div>
             <div class="core-body">
+              <img src="DSC00887_Original_Original.jpg" alt="Shashank Kallahalli Suresh" class="hero-avatar" />
               <div class="core-name">Hey, I am Shashank.</div>
               <div class="core-role">AI Product Owner • Business Process Analyst • Data & Analytics</div>
               <div class="core-badges">
@@ -1164,8 +1186,8 @@
     <div class="container">
       <div class="section-head">
         <span class="tiny">Skills & Tools</span>
-        <h2 class="tool-title">Product, analytics, and AI toolkits I use daily</h2>
-        <p>Built from my resume stack: product strategy, data/ML, BI, and cloud platforms.</p>
+        <h2 class="tool-title">Full-stack skill set across product, AI, data, and engineering</h2>
+        <p>Every tool here has been used in production — from PRD authoring to LLM deployment and BI reporting.</p>
       </div>
 
       <div class="toolkit-grid">
@@ -1174,58 +1196,88 @@
             <span class="icon-box peach"><i class="fa-solid fa-diagram-project"></i></span>
             <h3 class="tool-name">Product Management</h3>
           </div>
-          <p class="tool-copy">Roadmaps, KPIs, and stakeholder alignment for AI-driven products.</p>
+          <p class="tool-copy">Roadmaps, KPIs, OKRs, user stories, backlog grooming, PRD/TDS/FDS, Agile/Scrum, sprint planning, GTM strategy, stakeholder & change management.</p>
           <div class="tool-logos">
-            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/jira/0052CC" alt="Jira logo" /> Jira</span>
-            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/confluence/172B4D" alt="Confluence logo" /> Confluence</span>
-            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/miro/050038" alt="Miro logo" /> Miro</span>
-            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/github/181717" alt="GitHub logo" /> GitHub</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/jira/0052CC" alt="Jira" /> Jira</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/confluence/172B4D" alt="Confluence" /> Confluence</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/miro/050038" alt="Miro" /> Miro</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/github/181717" alt="GitHub" /> GitHub</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/notion/000000" alt="Notion" /> Notion</span>
           </div>
         </article>
 
         <article class="tool-card">
           <div class="tool-head">
-            <span class="icon-box mint"><i class="fa-solid fa-robot"></i></span>
+            <span class="icon-box mint"><i class="fa-solid fa-code"></i></span>
+            <h3 class="tool-name">Programming Languages</h3>
+          </div>
+          <p class="tool-copy">Python for data analysis, automation, and ML workflows. SQL and Presto SQL for large-scale enterprise data querying.</p>
+          <div class="tool-logos">
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/python/3776AB" alt="Python" /> Python</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/pandas/150458" alt="Pandas" /> Pandas</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/numpy/013243" alt="NumPy" /> NumPy</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/scikitlearn/F7931E" alt="Scikit-learn" /> Scikit-learn</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/mysql/4479A1" alt="SQL" /> SQL</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/jupyter/F37626" alt="Jupyter" /> Jupyter</span>
+          </div>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-head">
+            <span class="icon-box lilac"><i class="fa-solid fa-robot"></i></span>
             <h3 class="tool-name">AI / ML & Data</h3>
           </div>
-          <p class="tool-copy">LLMs, modeling, and data workflows with measurable business impact.</p>
+          <p class="tool-copy">LLMs, predictive modeling, forecasting, A/B testing, ETL/ELT pipelines, clustering, regression, time-series, and data quality validation.</p>
           <div class="tool-logos">
-            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/openai/000000" alt="OpenAI logo" /> OpenAI</span>
-            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/python/3776AB" alt="Python logo" /> Python</span>
-            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/pandas/150458" alt="Pandas logo" /> Pandas</span>
-            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/numpy/013243" alt="NumPy logo" /> NumPy</span>
-            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/scikitlearn/F7931E" alt="Scikit-learn logo" /> Scikit-learn</span>
-            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/jupyter/F37626" alt="Jupyter logo" /> Jupyter</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/openai/000000" alt="OpenAI" /> OpenAI</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/scikitlearn/F7931E" alt="Scikit-learn" /> Scikit-learn</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/apacheairflow/017CEE" alt="Airflow" /> ETL Pipelines</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/tensorflow/FF6F00" alt="TensorFlow" /> ML Modeling</span>
           </div>
         </article>
 
         <article class="tool-card">
           <div class="tool-head">
-            <span class="icon-box lilac"><i class="fa-solid fa-chart-line"></i></span>
-            <h3 class="tool-name">BI & Analytics</h3>
+            <span class="icon-box yellow"><i class="fa-solid fa-chart-line"></i></span>
+            <h3 class="tool-name">BI & Visualization</h3>
           </div>
-          <p class="tool-copy">Executive-ready dashboards, self-serve analytics, and adoption tracking.</p>
+          <p class="tool-copy">Executive-ready dashboards, self-serve analytics, and adoption tracking with industry-leading BI tools.</p>
           <div class="tool-logos">
-            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/tableau/E97627" alt="Tableau logo" /> Tableau</span>
-            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/powerbi/F2C811" alt="Power BI logo" /> Power BI</span>
-            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/googleanalytics/E37400" alt="Google Analytics logo" /> Google Analytics</span>
-            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/mixpanel/7856FF" alt="Mixpanel logo" /> Mixpanel</span>
-            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/mouseflow/1E1E1E" alt="Mouseflow logo" /> Mouseflow</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/tableau/E97627" alt="Tableau" /> Tableau</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/powerbi/F2C811" alt="Power BI" /> Power BI</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/googleanalytics/E37400" alt="Google Analytics" /> Google Analytics</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/mixpanel/7856FF" alt="Mixpanel" /> Mixpanel</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/matplotlib/11557c" alt="Matplotlib" /> Matplotlib</span>
           </div>
         </article>
 
         <article class="tool-card">
           <div class="tool-head">
-            <span class="icon-box yellow"><i class="fa-solid fa-cloud"></i></span>
+            <span class="icon-box mint"><i class="fa-solid fa-cloud"></i></span>
             <h3 class="tool-name">Cloud & Data Platforms</h3>
           </div>
-          <p class="tool-copy">Reliable data platforms for AI products, analytics, and reporting.</p>
+          <p class="tool-copy">Scalable cloud and database platforms for AI products, analytics pipelines, and enterprise data management.</p>
           <div class="tool-logos">
-            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/amazonwebservices/232F3E" alt="AWS logo" /> AWS</span>
-            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/microsoftazure/0078D4" alt="Azure logo" /> Azure</span>
-            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL logo" /> MySQL</span>
-            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/oracle/F80000" alt="Oracle logo" /> Oracle DB</span>
-            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/mongodb/47A248" alt="MongoDB logo" /> MongoDB</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/amazonwebservices/232F3E" alt="AWS" /> AWS</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/microsoftazure/0078D4" alt="Azure" /> Azure</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL" /> MySQL</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/oracle/F80000" alt="Oracle" /> Oracle DB</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/mongodb/47A248" alt="MongoDB" /> MongoDB</span>
+          </div>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-head">
+            <span class="icon-box peach"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+            <h3 class="tool-name">AI & Prompt Engineering</h3>
+          </div>
+          <p class="tool-copy">LLM workflow design, prompt engineering, AI-assisted product development, and agentic AI tooling for enterprise use cases.</p>
+          <div class="tool-logos">
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/anthropic/000000" alt="Claude" /> Claude</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/openai/000000" alt="OpenAI API" /> OpenAI API</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/microsoftazure/0078D4" alt="Azure AI" /> Azure AI</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/cursor/000000" alt="Cursor" /> Cursor</span>
+            <span class="tool-pill"><img class="tool-logo" src="https://cdn.simpleicons.org/vscodium/2F80ED" alt="Windsurf" /> Windsurf</span>
           </div>
         </article>
       </div>
